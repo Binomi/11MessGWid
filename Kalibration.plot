@@ -10,8 +10,8 @@ set key top left
 f(x)=m*x+b
 
 set fit logfile 'Kalibration.log'
-fit f(x) 'Kalibration.dat' u ($1*1.238/10**10):2 via m,b
-p 'Kalibration.dat' u ($1*1.238/10**10):2 t'Messwerte' ,\
+fit f(x) 'Kalibration.dat' u ($1*1.238*100):2 via m,b
+p 'Kalibration.dat' u ($1*1.238*100):2 t'Messwerte' ,\
 f(x) lt -1 t'Regressionsgerade'
 
 set output
