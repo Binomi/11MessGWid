@@ -84,3 +84,135 @@ correlation matrix of the fit parameters:
                m      b      
 m               1.000 
 b              -0.652  1.000 
+
+
+*******************************************************************************
+Mon Sep  8 15:33:10 2014
+
+
+FIT:    data read from 'Luftspule.dat' u 1:(log($2)):(0.1/$2)
+        format = x:z:s
+        #datapoints = 22
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 1649.99           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 10.21
+
+initial set of free parameter values
+
+m               = -315.291
+b               = 1.1132
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 109.366
+rel. change during last iteration : -2.74447e-07
+
+degrees of freedom    (FIT_NDF)                        : 20
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 2.33843
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.46828
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+m               = -12126.8         +/- 874.9        (7.215%)
+b               = 1.16937          +/- 0.04553      (3.893%)
+
+
+correlation matrix of the fit parameters:
+
+               m      b      
+m               1.000 
+b              -0.652  1.000 
+
+
+*******************************************************************************
+Mon Sep  8 15:34:24 2014
+
+
+FIT:    data read from 'Luftspule.dat' u 1:(log($2)):(0.1/$2)
+        format = x:z:s
+        #datapoints = 22
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 1511.44           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 10.0304
+
+initial set of free parameter values
+
+m               = -315.291
+b               = 1.1132
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 31.5918
+rel. change during last iteration : -1.82655e-10
+
+degrees of freedom    (FIT_NDF)                        : 20
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.25682
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.57959
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+m               = -4502.31         +/- 176.4        (3.918%)
+b               = 1.1425           +/- 0.02516      (2.202%)
+
+
+correlation matrix of the fit parameters:
+
+               m      b      
+m               1.000 
+b              -0.660  1.000 
+
+
+*******************************************************************************
+Mon Sep  8 16:16:03 2014
+
+
+FIT:    data read from 'Luftspule.dat' u 1:(log($2)):(0.1/$2)
+        format = x:z:s
+        #datapoints = 22
+function used for fitting: f(x)
+fitted parameters initialized with current variable values
+
+
+
+ Iteration 0
+ WSSR        : 1522.63           delta(WSSR)/WSSR   : 0
+ delta(WSSR) : 0                 limit for stopping : 1e-05
+ lambda	  : 10.0417
+
+initial set of free parameter values
+
+m               = -315.291
+b               = 1.1132
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 26.4927
+rel. change during last iteration : -2.45688e-10
+
+degrees of freedom    (FIT_NDF)                        : 20
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.15093
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.32463
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+
+m               = -4608.28         +/- 162.9        (3.534%)
+b               = 1.15233          +/- 0.02298      (1.994%)
+
+
+correlation matrix of the fit parameters:
+
+               m      b      
+m               1.000 
+b              -0.659  1.000 
