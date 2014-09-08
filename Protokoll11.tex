@@ -240,11 +240,18 @@ Mit dem Logarithmischen Dekrement $\Lambda=\beta T$ ergibt sich für die Indukti
 
 $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 
-\subsection{Berechnung von $\varepsilon_0$ und Widerständen}
+\subsection{Berechnung von $\varepsilon_0$}
 
 \begin{empheq}[box=\shadowbox*]{align}
 	\varepsilon_0= \left(9.19 \pm 0.07\right)\cdot 10^{-12}\,\si[per-mode=fraction]{\ampere\second\per\volt\per\meter}
 \end{empheq}
+
+\begin{align*}
+	C&=\frac{Q}{U}\\
+	C&=\left(4.04 \pm 0.03\right) \cdot 10^{-9}\\
+	\sigma_{C}&=\frac{1}{U^{2}} \cdot \sqrt{Q^{2} \cdot \sigma_{U}^{2} + \sigma_{Q}^{2} \cdot U^{2}}
+\end{align*}
+
 
 \subsection{Entladung des Kondensators}
 \begin{figure}[!htb]
@@ -259,7 +266,77 @@ $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 	\caption{Entladung des Kondesators über den Isolationswiderstand $R_\text{iso}$}
 \end{figure}
 
+\begin{align*}
+	R_\text{iso}&=- \frac{1}{C \cdot m_\text{iso}}\\
+	R_\text{iso}&=\left(1.5 \pm 0.1\right) \times 10^{10}\\
+	\sigma_{R_\text{iso}}&=\frac{1}{C^{2} \cdot m_\text{iso}^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m_\text{iso}}^{2} + m_\text{iso}^{2} \cdot \sigma_{C}^{2}}
+\end{align*}
+
+\begin{align*}
+	R&=- \frac{1}{C \cdot m}\\
+	R&=\left(2.4 \pm 0.2\right) \times 10^{9}\\
+	\sigma_{R}&=\frac{1}{C^{2} \cdot m^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m}^{2} + m^{2} \cdot \sigma_{C}^{2}}
+\end{align*}
+
+\begin{align*}
+	R_x&=\frac{1}{\frac{1}{R} - \frac{1}{R_\text{iso}}}\\
+	R_x&=\left(2.8 \pm 0.4\right) \times 10^{9}\\
+	\sigma_{R_x}&=\frac{1}{\left(R_\text{iso} - R\right)^{2}} \cdot \sqrt{R_\text{iso}^{4} \cdot \sigma_{R}^{2} + R^{4} \cdot \sigma_{R_\text{iso}}^{2}}
+\end{align*}
+
 \subsection{Schwingkreise}
+\subsubsection{Schritt 5}
+\begin{align*}
+	R_\text{oszi}&=R_2 \cdot \left(\frac{m_\text{ges}}{m_\text{oszi}} - 1\right)\\
+	R_\text{oszi}&=\left(9.0 \pm 0.6\right) \times 10^{5}\\
+	\sigma_{R_\text{oszi}}&=\frac{1}{m_\text{oszi}^{2}} \cdot \sqrt{m_\text{ges}^{2} \cdot R_2^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \left(R_2^{2} \cdot \sigma_{m_\text{ges}}^{2} + \sigma_{R_2}^{2} \cdot \left(m_\text{ges} - m_\text{oszi}\right)^{2}\right)}
+\end{align*}
+
+\begin{align*}
+	C&=- \frac{1}{m_\text{oszi} \cdot R_\text{oszi}}\\
+	C&=\left(4.3 \pm 0.3\right) \times 10^{-9}\\
+	\sigma_{C}&=\frac{1}{m_\text{oszi}^{2} \cdot R_\text{oszi}^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} + R_\text{oszi}^{2} \cdot \sigma_{m_\text{oszi}}^{2}}
+\end{align*}
+
+\subsubsection{Schritt 6}
+\begin{align*}
+	R_x&=\frac{R_\text{oszi}}{\frac{m_x}{m_\text{oszi}} - 1}\\
+	R_x&=\left(-0.3 \pm 1.2\right) \times 10^{9}\\
+	\sigma_{R_x}&=\frac{1}{\left(m_x - m_\text{oszi}\right)^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} \cdot \left(m_x - m_\text{oszi}\right)^{2} + R_\text{oszi}^{2} \cdot \left(m_x^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \sigma_{m_x}^{2}\right)}
+\end{align*}
+
+\subsubsection{Schritt 7}
+\begin{align*}
+L&=\frac{T^{2}}{C \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)}\\
+\sigma_{L}&=\frac{T}{C^{2} \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)^{2}} \cdot \sqrt{4 \cdot \beta^{2} \cdot C^{2} \cdot \sigma_{\beta}^{2} \cdot T^{6} + 64 \cdot \pi^{4} \cdot C^{2} \cdot \sigma_{T}^{2} + \sigma_{C}^{2} \cdot T^{2} \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)^{2}}
+\end{align*}
+	
+\begin{align*}
+	L&=9.6 \pm 0.7\\
+	L&=0.018 \pm 0.001
+\end{align*}
+
+\begin{align*}
+R_L&=2 \cdot \beta \cdot L\\
+\sigma_{R_L}&=2 \cdot \sqrt{\beta^{2} \cdot \sigma_{L}^{2} + L^{2} \cdot \sigma_{\beta}^{2}}
+\end{align*}
+
+\begin{align*}
+	R_L=\left(6.1 \pm 0.5\right) \times 10^{3}\\
+	R_L=\left(1.6 \pm 0.1\right) \times 10^{2}
+\end{align*}
+
+\subsubsection{Schritt 9}
+\begin{align*}
+C_2&=\frac{C_\text{Pl.}}{m_g} \cdot m_c\\
+C_2&=\left(3.1 \pm 0.2\right) \times 10^{-9}\\
+\sigma_{C_2}&=\frac{1}{m_g^{2}} \cdot \sqrt{C_\text{Pl.}^{2} \cdot m_c^{2} \cdot \sigma_{m_g}^{2} + m_g^{2} \cdot \left(C_\text{Pl.}^{2} \cdot \sigma_{m_c}^{2} + m_c^{2} \cdot \sigma_{C_\text{Pl.}}^{2}\right)}
+\end{align*}
+
+\section{Diskussion}
+\label{sec:diskussion}
+
+\section{Anhang}
 \begin{figure}[!htb]
 	\centering
 	\input{Drosselspule.tex}
@@ -271,10 +348,5 @@ $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 	\input{Luftspule.tex}
 	\caption{\textit{Luftspule}: Extrema des Spannungsverlauf logarithmisch gegen die Zeit}
 \end{figure}
-
-\section{Diskussion}
-\label{sec:diskussion}
-
-\section{Anhang}
 
 \end{document}
