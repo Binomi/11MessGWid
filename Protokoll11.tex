@@ -305,14 +305,14 @@ $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 \subsection{Entladung des Kondensators}
 \begin{figure}[!htb]
 	\centering
-	\input{Entladen1.tex}
-	\caption{Entladung des Kondesators über $R_x$ und $R_\text{iso}$}
+	\input{Entladen2.tex}
+	\caption{Entladung des Kondesators über den Isolationswiderstand $R_\text{iso}$}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
-	\input{Entladen2.tex}
-	\caption{Entladung des Kondesators über den Isolationswiderstand $R_\text{iso}$}
+	\input{Entladen1.tex}
+	\caption{Entladung des Kondesators über $R_x$ und $R_\text{iso}$}
 \end{figure}
 
 \begin{align*}
@@ -344,7 +344,15 @@ $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 \end{empheq}
 
 
-\subsection{Schwingkreise}
+\subsection{Messungen mit dem Oszilloskop}
+Die ausgedruckten Spannungsverläufe befinden sich im Anhang.
+Wie erwartet ergibt sich folgendes:
+Bei RC-Schaltungen ergibt sich eine abfallende Exponentialfunktion.
+Je größer der Widerstand bzẃ. die Kapazität, desto größer die Abfallzeit.
+Bei den RLC-Kreisen ergibt sich eine abfallende Schwingung:
+Je größer der Widerstand bzw. kleiner die Induktivität, desto schneller fällt die Einhüllende ab.
+All dies wird in der nachfolgenden Auswertung verifiziert.  
+
 \subsubsection{Eingangswiderstand des Oszilloskops und Kapazität des Plattenkondensators}
 \begin{align*}
 	R_\text{oszi}&=R_2 \cdot \left(\frac{m_\text{ges}}{m_\text{oszi}} - 1\right)\\
@@ -389,12 +397,12 @@ L&=\frac{T^{2}}{C \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)}\\
 
 Für die Drosselspule ergibt sich:	
 \begin{empheq}[box=\shadowbox*]{align}
-	L=(9.6 \pm 0.7)\, \si{\henry} \quad , \quad
+	L=(9.6 \pm 0.7)\, \si{\henry} \; , \;
 	R_L=\left(6.1 \pm 0.5\right)\, \si{\kilo\ohm}
 \end{empheq}
 Für die Luftspule erhält man:
 \begin{empheq}[box=\shadowbox*]{align}
-	L=(0.018 \pm 0.001)\, \si{\henry} \quad , \quad
+	L=(0.018 \pm 0.001)\, \si{\henry} ~,~
 	R_L=\left(160 \pm 10\right)\, \si{\ohm}
 \end{empheq}
 
