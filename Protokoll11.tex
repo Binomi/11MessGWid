@@ -227,6 +227,51 @@ Mit dem Logarithmischen Dekrement $\Lambda=\beta T$ ergibt sich für die Indukti
 
 \section{Durchführung}
 \label{sec:durchfuehrung}
+\subsection{Kalibrieren des Ladungsmessgerätes}
+Dazu wird der Eichkreis nach Abb. \ref{} verschaltet.
+Der Eichgenerator wird in der Stellung \emph{Zeitmessung} mit dem Oszilloskop auf verschiedene Zeitdauern der Spannungsimpulse eingestellt.
+Erwartet werden Werte zwischen 50 und 500 Millisekunden.
+Je eingestellter Zeitdauer wird dann in der Stellung \emph{Eichen} dreimal der Messwert des Ladungsmessgerätes notiert.
+Dies geschieht für 5 verschiedene Zeiten.
+
+\subsection{Entladung des Plattenkondensators}
+Der  Plattenkondensator wir mit 220V aufgeladen und sofort durch den Messkreis entladen.
+Dabei wird die geflossene Ladung gemessen.
+Dies geschieht fünfmal.\\
+Nun wird der Kondensator wieder aufgeladen und nach bestimmten Zeiten (t=0, 1,2,3,5 Minuten) über das Ladungsmessgerät entladen.
+Die verbleibende Ladung wird notiert.
+In der Zwischenzeit ist Ladung über den Isolationswiderstand des Kondensators abgeflossen.
+Mit dieser Methode kann man eben diesen bestimmen.\\
+Parallel wird der unbekannte Widerstand $R_x$ geschaltet und vorige Messung für folgende Zeiten wiederholt: 0, 2, 4, 6, 8, 10, 20, 30 und 60 Sekunden.
+Für jede Zeitspanne werden zwei Werte aufgenommen.
+
+\subsection{Schwingkreise}
+Man tauscht im Messkreis das Ladungsmessgerät durch das Oszilloskop.
+Dieses soll den Spannungsverlauf $U(t)$ am Kondensator zeigen.
+\begin{enumerate}
+	\item Plattenkondensator alleine
+	\item Kondensator und 2M$\Omega$-Widerstand parallel dazu
+	\item Kondensator und Widerstand $R_x$ parallel dazu
+	\item Kondensator und Drosselspule parallel
+	\item Kondensator und Luftspule parallel
+	\item Kommerzieller Kondensator (Folienkondensator) und 2M$\Omega$-Widerstand parallel dazu	
+\end{enumerate}
+Die vom Oszilloskop angezeigten Spannungsverläufe werden mit dem zugehörigen Drucker ausgedruckt.
+Bei Messungen von einem RC-Kreis sollte man die \emph{Abfallzeit} vom Oszilloskop berechnen lassen, also die Zeit, die zwischen $90\%$ und $10\%$ der Maximalspannung vergeht\footnote{aus der Anleitung des verwendeten Oszilloskopes}.%Hier muss nochwas eingefügt werden!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Dies vereinfacht die Auswertung.
+Bei den RLC-Kreisen benötigt man die Periode der abklingenden Schwingung. 
+Zur Erzielung guter Ergebnisse mussten wir am Oszilloskop die Einstellung \emph{Tastknopf} auf 50x stellen.
+
+\subsection{Messungen mit dem Multimeter}
+Mit dem Multimeter werden folgende Größen gemessen:
+\begin{itemize}
+	\item ohmsche Widerstände $R_L$ der beiden Spulen
+	\item ohmscher Widerstand $R_2$ (2M$\Omega$)
+	\item Isolationswiderstand $R_\text{iso}$ des Plattenkondenstaors
+	\item unbekannter Widerstand $R_x$
+ 	\item Kapazitäten $C$ der beiden Kondensatoren  
+\end{itemize}
+Außerdem werden die Daten der Luftspule an deren Ende abgelesen.
 
 \section{Auswertung}
 \label{sec:auswertung}
@@ -248,9 +293,12 @@ $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 
 \begin{align*}
 	C&=\frac{Q}{U}\\
-	C&=\left(4.04 \pm 0.03\right)\, \si{\nano\farad}\\
 	\sigma_{C}&=\frac{1}{U^{2}} \cdot \sqrt{Q^{2} \cdot \sigma_{U}^{2} + \sigma_{Q}^{2} \cdot U^{2}}
 \end{align*}
+
+\begin{empheq}[box=\shadowbox*]{align}
+	C&=\left(4.04 \pm 0.03\right)\, \si{\nano\farad}
+\end{empheq}
 
 
 \subsection{Entladung des Kondensators}
@@ -268,70 +316,97 @@ $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 
 \begin{align*}
 	R_\text{iso}&=- \frac{1}{C \cdot m_\text{iso}}\\
-	R_\text{iso}&=\left(15 \pm 1\right)\, \si{\giga\ohm}\\
 	\sigma_{R_\text{iso}}&=\frac{1}{C^{2} \cdot m_\text{iso}^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m_\text{iso}}^{2} + m_\text{iso}^{2} \cdot \sigma_{C}^{2}}
 \end{align*}
 
+\begin{empheq}[box=\shadowbox*]{align}
+	R_\text{iso}&=\left(15 \pm 1\right)\, \si{\giga\ohm}
+\end{empheq}
+
 \begin{align*}
 	R&=- \frac{1}{C \cdot m}\\
-	R&=\left(2.4 \pm 0.2\right) \, \si{\giga\ohm}\\
 	\sigma_{R}&=\frac{1}{C^{2} \cdot m^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m}^{2} + m^{2} \cdot \sigma_{C}^{2}}
 \end{align*}
 
+\begin{empheq}[box=\shadowbox*]{align}
+	R&=\left(2.4 \pm 0.2\right) \, \si{\giga\ohm}
+\end{empheq}
+
+
 \begin{align*}
-	R_x&=\frac{1}{\frac{1}{R} - \frac{1}{R_\text{iso}}}\\
-	R_x&=\left(2.8 \pm 0.4\right) \, \si{\giga\ohm}\\
+	R_x&=\left(\frac{1}{R} - \frac{1}{R_\text{iso}}\right)^{-1}\\
 	\sigma_{R_x}&=\frac{1}{\left(R_\text{iso} - R\right)^{2}} \cdot \sqrt{R_\text{iso}^{4} \cdot \sigma_{R}^{2} + R^{4} \cdot \sigma_{R_\text{iso}}^{2}}
 \end{align*}
 
+\begin{empheq}[box=\shadowbox*]{align}
+	R_x&=\left(2.8 \pm 0.4\right) \, \si{\giga\ohm}
+\end{empheq}
+
+
 \subsection{Schwingkreise}
-\subsubsection{Schritt 5}
+\subsubsection{Eingangswiderstand des Oszilloskops und Kapazität des Plattenkondensators}
 \begin{align*}
 	R_\text{oszi}&=R_2 \cdot \left(\frac{m_\text{ges}}{m_\text{oszi}} - 1\right)\\
-	R_\text{oszi}&=\left(900 \pm 60\right) \, \si{\kilo\ohm}\\
 	\sigma_{R_\text{oszi}}&=\frac{1}{m_\text{oszi}^{2}} \cdot \sqrt{m_\text{ges}^{2} \cdot R_2^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \left(R_2^{2} \cdot \sigma_{m_\text{ges}}^{2} + \sigma_{R_2}^{2} \cdot \left(m_\text{ges} - m_\text{oszi}\right)^{2}\right)}
 \end{align*}
 
+\begin{empheq}[box=\shadowbox*]{align}
+	R_\text{oszi}&=\left(900 \pm 60\right) \, \si{\kilo\ohm}
+\end{empheq}
+
 \begin{align*}
 	C&=- \frac{1}{m_\text{oszi} \cdot R_\text{oszi}}\\
-	C&=\left(4.3 \pm 0.3\right) \, \si{\nano\farad}\\
 	\sigma_{C}&=\frac{1}{m_\text{oszi}^{2} \cdot R_\text{oszi}^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} + R_\text{oszi}^{2} \cdot \sigma_{m_\text{oszi}}^{2}}
 \end{align*}
 
-\subsubsection{Schritt 6}
+\begin{empheq}[box=\shadowbox*]{align}
+	C&=\left(4.3 \pm 0.3\right) \, \si{\nano\farad}
+\end{empheq}
+
+
+\subsubsection{Bestimmung des unbekannten Widerstandes $R_x$}
 \begin{align*}
 	R_x&=\frac{R_\text{oszi}}{\frac{m_x}{m_\text{oszi}} - 1}\\
-	R_x&=\left(-0.3 \pm 1.2\right) \, \si{\giga\ohm}\\
 	\sigma_{R_x}&=\frac{1}{\left(m_x - m_\text{oszi}\right)^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} \cdot \left(m_x - m_\text{oszi}\right)^{2} + R_\text{oszi}^{2} \cdot \left(m_x^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \sigma_{m_x}^{2}\right)}
 \end{align*}
 
-\subsubsection{Schritt 7}
+\begin{empheq}[box=\shadowbox*]{align}
+	R_x&=\left(-0.3 \pm 1.2\right) \, \si{\giga\ohm}
+\end{empheq}
+
+
+\subsubsection{Induktivität und ohmscher Widerstand der Spulen}
 \begin{align*}
 L&=\frac{T^{2}}{C \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)}\\
 \sigma_{L}&=\frac{T}{C^{2} \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)^{2}} \cdot \sqrt{4 \cdot \beta^{2} \cdot C^{2} \cdot \sigma_{\beta}^{2} \cdot T^{6} + 64 \cdot \pi^{4} \cdot C^{2} \cdot \sigma_{T}^{2} + \sigma_{C}^{2} \cdot T^{2} \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)^{2}}
 \end{align*}
-	
-\begin{align*}
-	L&=(9.6 \pm 0.7)\, \si{\henry}\\
-	L&=(0.018 \pm 0.001)\, \si{\henry}
-\end{align*}
 
 \begin{align*}
-R_L&=2 \cdot \beta \cdot L\\
-\sigma_{R_L}&=2 \cdot \sqrt{\beta^{2} \cdot \sigma_{L}^{2} + L^{2} \cdot \sigma_{\beta}^{2}}
+	R_L&=2 \cdot \beta \cdot L\\
+	\sigma_{R_L}&=2 \cdot \sqrt{\beta^{2} \cdot \sigma_{L}^{2} + L^{2} \cdot \sigma_{\beta}^{2}}
 \end{align*}
 
-\begin{align*}
-	R_L=\left(6.1 \pm 0.5\right)\, \si{\kilo\ohm}\\
+Für die Drosselspule ergibt sich:	
+\begin{empheq}[box=\shadowbox*]{align}
+	L=(9.6 \pm 0.7)\, \si{\henry} \quad , \quad
+	R_L=\left(6.1 \pm 0.5\right)\, \si{\kilo\ohm}
+\end{empheq}
+Für die Luftspule erhält man:
+\begin{empheq}[box=\shadowbox*]{align}
+	L=(0.018 \pm 0.001)\, \si{\henry} \quad , \quad
 	R_L=\left(160 \pm 10\right)\, \si{\ohm}
-\end{align*}
+\end{empheq}
 
-\subsubsection{Schritt 9}
+\subsubsection{Kapazität des Folienkondensators}
 \begin{align*}
 C_2&=\frac{C_\text{Pl.}}{m_g} \cdot m_c\\
-C_2&=\left(3.1 \pm 0.2\right) \, \si{\nano\farad}\\
 \sigma_{C_2}&=\frac{1}{m_g^{2}} \cdot \sqrt{C_\text{Pl.}^{2} \cdot m_c^{2} \cdot \sigma_{m_g}^{2} + m_g^{2} \cdot \left(C_\text{Pl.}^{2} \cdot \sigma_{m_c}^{2} + m_c^{2} \cdot \sigma_{C_\text{Pl.}}^{2}\right)}
 \end{align*}
+
+\begin{empheq}[box=\shadowbox*]{align}
+	C_2&=\left(3.1 \pm 0.2\right) \, \si{\nano\farad}
+\end{empheq}
+
 
 \section{Diskussion}
 \label{sec:diskussion}
