@@ -188,6 +188,7 @@ Deshalb werden wir in diesem Versuch lernen, wie man das besser machen kann.
 
 \begin{align}
 	Q(t)=Q_0 \exp \left(-\frac{t}{RC}\right)
+	\label{eq:Q(t)}
 \end{align}
 Kennt man die Kapazität $C$ und die Ladung, die sich auf dem Kondensator befindet, zu zwei verschiedenen Zeitpunkten $t_1$ und $t_2$, kann man also den Widerstand $R$ berechnen, über den der Strom abfließt:
 \begin{align}
@@ -198,6 +199,7 @@ Für die Berechnung der Kapazität müssen also Randeffekte betrachtet werden.
 Dabei wird diese Formel verwendet:
 \begin{align}	
 	C_n=(n-1)\varepsilon_0\varepsilon_r\left[\frac{\pi r^2}{d}+r\left(\ln\frac{16\pi r}{d}-1\right)\right]
+	\label{eq:C_Pl}
 \end{align}
 %ergibt sich eine Kapazität $C=3.896~\si{\nano\farad}$.
 
@@ -277,6 +279,13 @@ Außerdem werden die Daten der Luftspule an deren Ende abgelesen.
 \section{Auswertung}
 \label{sec:auswertung}
 \subsection{Kalibration des Ladungsmessgerätes}
+Um das Ladungsmessgerät zu eichen, lässt man einen konstanten Strom $I$ für eine bestimmte Zeit $t$ fließen.
+Es fließt also insgesamt die Ladung $Q=I \cdot t$.
+Trägt man also die abgelesen Skalenteile gegen die tatsächliche Ladung auf - wie in Abb.\ref{fig:Kalibration} - kann man nun Skalenteile in Coulomb über die Geradensteigung $m$ umrechnen.
+Es ergibt sich:
+$$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
+Da der Fehler sehr klein ist, wird er bei den nun folgenden Umrechnungen weggelassen.
+
 \begin{figure}
  \centering
  \input{Kalibration.tex}
@@ -284,71 +293,68 @@ Außerdem werden die Daten der Luftspule an deren Ende abgelesen.
  \label{fig:Kalibration}
 \end{figure}
 
-$$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
-
 \subsection{Berechnung von $\varepsilon_0$}
-
-\begin{empheq}[box=\shadowbox*]{align}
-	\varepsilon_0= \left(9.19 \pm 0.07\right)\cdot 10^{-12}\,\si[per-mode=fraction]{\ampere\second\per\volt\per\meter}
-\end{empheq}
-
+Wir legen an den Kondensator eine Spannung an und lassen danach die aufgebrachte Ladung über das Ladungsmessgerät abfließen.
+Mit folgender Formel kann dann die Kapazität berechnet werden.
 \begin{align*}
 	C&=\frac{Q}{U}\\
 	\sigma_{C}&=\frac{1}{U^{2}} \cdot \sqrt{Q^{2} \cdot \sigma_{U}^{2} + \sigma_{Q}^{2} \cdot U^{2}}
 \end{align*}
 
+Mit einer angelegten Spannung $U=(220 \pm 0.1)\,$V und einer gemessenen Ladung $Q=\left(8.89 \pm 0.07\right) \cdot 10^{-7}\,\si{\coulomb}$ folgt für die Kapazität des Plattenkondensators
 \begin{empheq}[box=\shadowbox*]{align}
 	C&=\left(4.04 \pm 0.03\right)\, \si{\nano\farad}
 \end{empheq}
 
+Stellt man \eqref{eq:C_Pl} nun nach der elektrischen Feldkonstante $\varepsilon_0$ um und setzt die oben angegebenen Angaben des Plattenkondensators sowie die gemessene Kapazität ein, erhält man
+\begin{empheq}[box=\shadowbox*]{align}
+	\varepsilon_0= \left(9.19 \pm 0.07\right)\cdot 10^{-12}\,\si[per-mode=fraction]{\ampere\second\per\volt\per\meter}
+\end{empheq}
+
 
 \subsection{Entladung des Kondensators}
+Trägt man die Ladung, die sich auf dem Plattenkondensator befindet und über einen Widerstand $R$ abfließt, logarithmisch gegen die Zeit auf (Abb. \ref{fig:R_iso} und \ref{fig:R_x+R_iso}), ergibt sich nach \eqref{eq:Q(t)} eine Gerade.
+Aus der Geradensteigung $m$ kann mit dem obigen Ergebnis für die Kapazität der Widerstand $R$ berechnet werden.
+\begin{align*}
+	R&=- \frac{1}{C \cdot m}\\
+	\sigma_{R}&=\frac{1}{C^{2} \cdot m^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m}^{2} + m^{2} \cdot \sigma_{C}^{2}}
+\end{align*}
+
+Setzt man nun die Geradensteigung $m_\text{iso}$ aus Abb.\ref{fig:R_iso} ein, erhält man für den Isolationswiderstand $R_\text{iso}$ des Plattenkondensators folgenden Wert:
+\begin{empheq}[box=\shadowbox*]{align}
+	R_\text{iso}&=\left(15 \pm 1\right)\, \si{\giga\ohm}
+\end{empheq}
+
+Analog wird der Gesamtwiderstand $R=\left(2.4 \pm 0.2\right) \, \si{\giga\ohm}$ aus der zweiten Messung berechnet.
+Dieser setzt sich jedoch aus dem eben berechneten  Isolationswiderstand und dem unbekannten Widerstand $R_x$ zusammen, die parallel geschaltet sind.
+\begin{align*}
+	R_x&=\left(\frac{1}{R} - \frac{1}{R_\text{iso}}\right)^{-1}\\
+	\sigma_{R_x}&=\frac{1}{\left(R_\text{iso} - R\right)^{2}} \cdot \sqrt{R_\text{iso}^{4} \cdot \sigma_{R}^{2} + R^{4} \cdot \sigma_{R_\text{iso}}^{2}}
+\end{align*}
+Es ergibt sich also:
+\begin{empheq}[box=\shadowbox*]{align}
+	R_x&=\left(2.8 \pm 0.4\right) \, \si{\giga\ohm}
+\end{empheq}
+
 \begin{figure}[!htb]
 	\centering
 	\input{Entladen2.tex}
 	\caption{Entladung des Kondesators über den Isolationswiderstand $R_\text{iso}$}
+	\label{fig:R_iso}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
 	\input{Entladen1.tex}
 	\caption{Entladung des Kondesators über $R_x$ und $R_\text{iso}$}
+	\label{fig:R_x+R_iso}
 \end{figure}
-
-\begin{align*}
-	R_\text{iso}&=- \frac{1}{C \cdot m_\text{iso}}\\
-	\sigma_{R_\text{iso}}&=\frac{1}{C^{2} \cdot m_\text{iso}^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m_\text{iso}}^{2} + m_\text{iso}^{2} \cdot \sigma_{C}^{2}}
-\end{align*}
-
-\begin{empheq}[box=\shadowbox*]{align}
-	R_\text{iso}&=\left(15 \pm 1\right)\, \si{\giga\ohm}
-\end{empheq}
-
-\begin{align*}
-	R&=- \frac{1}{C \cdot m}\\
-	\sigma_{R}&=\frac{1}{C^{2} \cdot m^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m}^{2} + m^{2} \cdot \sigma_{C}^{2}}
-\end{align*}
-
-\begin{empheq}[box=\shadowbox*]{align}
-	R&=\left(2.4 \pm 0.2\right) \, \si{\giga\ohm}
-\end{empheq}
-
-
-\begin{align*}
-	R_x&=\left(\frac{1}{R} - \frac{1}{R_\text{iso}}\right)^{-1}\\
-	\sigma_{R_x}&=\frac{1}{\left(R_\text{iso} - R\right)^{2}} \cdot \sqrt{R_\text{iso}^{4} \cdot \sigma_{R}^{2} + R^{4} \cdot \sigma_{R_\text{iso}}^{2}}
-\end{align*}
-
-\begin{empheq}[box=\shadowbox*]{align}
-	R_x&=\left(2.8 \pm 0.4\right) \, \si{\giga\ohm}
-\end{empheq}
-
 
 \subsection{Messungen mit dem Oszilloskop}
 Die ausgedruckten Spannungsverläufe befinden sich im Anhang.
 Wie erwartet ergibt sich folgendes:
 Bei RC-Schaltungen ergibt sich eine abfallende Exponentialfunktion.
-Je größer der Widerstand bzẃ. die Kapazität, desto größer die Abfallzeit.
+Je größer der Widerstand bzw. die Kapazität, desto größer die Abfallzeit.
 Bei den RLC-Kreisen ergibt sich eine abfallende Schwingung:
 Je größer der Widerstand bzw. kleiner die Induktivität, desto schneller fällt die Einhüllende ab.
 All dies wird in der nachfolgenden Auswertung verifiziert.  
