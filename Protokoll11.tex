@@ -222,9 +222,11 @@ Mit den folgenden Beziehungen der Ströme $I_R=U_E/R$ und $I_C=\dot{Q}_C=C\dot{U
 Mit dem Logarithmischen Dekrement $\Lambda=\beta T$ ergibt sich für die Induktivität der Spule
 \begin{align}
 	L=\frac{1}{C\omega_0^2}=\frac{1}{C(\omega^2+\beta^2)}=\frac{1}{C}\frac{T^2}{4\pi^2+\Lambda^2}
+	\label{eq:L}
 \end{align}
 \begin{align}
 	L=\mu_0 \cdot A \cdot \left(\frac{n}{l}\right)^2
+	\label{eq:IndLangeSpule}
 \end{align}
 
 \section{Durchführung}
@@ -384,8 +386,9 @@ Für die anderen wurde ein Fehler von $0.1\,$ms angenommen.
 	\caption{Abfallzeiten und Steigungen der RC-Messungen mit dem Oszi}
 	\label{tab:RC_Oszi}
 \end{table}
-Da man bei den ersten beiden Messungen den gleichen Kondensator verwendet, ergeben sich zwei Gleichungen mit zwei Unbekannten $C$ und $R_\text{oszi}$.
-%hier fehlt noch was!!!!!!!!!!!!!!!!!!!
+Da man bei den ersten beiden Messungen den gleichen Kondensator verwendet, ergeben sich zwei Gleichungen mit zwei Unbekannten: $C$ und $R_\text{oszi}$.\\
+Stellt man beide Gleichungen nach nach $-\frac{1}{C}$ um, erhält man $m_\text{oszi}\cdot R_\text{oszi}=m_\text{ges}\cdot R_\text{ges}$, wobei $R_\text{ges}=\left(R_\text{oszi}^{-1}+R_2^{-1}\right)^{-1}$ gilt.
+Dies kann nun nach $R_\text{oszi}$ umgestellt werden.
 \begin{align*}
 	R_\text{oszi}&=R_2 \cdot \left(\frac{m_\text{ges}}{m_\text{oszi}} - 1\right)\\
 	\sigma_{R_\text{oszi}}&=\frac{1}{m_\text{oszi}^{2}} \cdot \sqrt{m_\text{ges}^{2} \cdot R_2^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \left(R_2^{2} \cdot \sigma_{m_\text{ges}}^{2} + \sigma_{R_2}^{2} \cdot \left(m_\text{ges} - m_\text{oszi}\right)^{2}\right)}
@@ -400,29 +403,49 @@ Nun kann leicht die Kapazität des Plattenkondensators bestimmt werden.
 	C&=- \frac{1}{m_\text{oszi} \cdot R_\text{oszi}}\\
 	\sigma_{C}&=\frac{1}{m_\text{oszi}^{2} \cdot R_\text{oszi}^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} + R_\text{oszi}^{2} \cdot \sigma_{m_\text{oszi}}^{2}}
 \end{align*}
-
+Aus unseren Werten ergibt sich:
 \begin{empheq}[box=\shadowbox*]{align}
 	C&=\left(4.3 \pm 0.3\right) \, \si{\nano\farad}
 \end{empheq}
 
 
 \subsubsection{Bestimmung des unbekannten Widerstandes $R_x$}
+Analog formen wir nun die Gleichungen um, die aus der ersten und dritten Messung folgen, und lösen nach dem unbekannten Widerstand $R_x$ auf.
 \begin{align*}
 	R_x&=\frac{R_\text{oszi}}{\frac{m_x}{m_\text{oszi}} - 1}\\
 	\sigma_{R_x}&=\frac{1}{\left(m_x - m_\text{oszi}\right)^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} \cdot \left(m_x - m_\text{oszi}\right)^{2} + R_\text{oszi}^{2} \cdot \left(m_x^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \sigma_{m_x}^{2}\right)}
 \end{align*}
-
+Wir erhalten folgenden Wert:
 \begin{empheq}[box=\shadowbox*]{align}
 	R_x&=\left(-0.3 \pm 1.2\right) \, \si{\giga\ohm}
 \end{empheq}
 
+\subsubsection{Kapazität des Folienkondensators}
+Nimmt man sich die Gleichungen aus der zweiten und der letzten RC-Messung mit dem Oszilloskop (2M$\Omega$-Widerstand parallel), kann nun leicht nach der Kapazität $C_2$ des herkömmlichen Kondensators aufgelöst werden, da der Gesamtwiderstand $R_\text{ges}$ beider Messungen gleich ist.
+\begin{align*}
+C_2&=\frac{m_2}{m_\text{ges}} \cdot C\\
+\sigma_{C_2}&=\frac{1}{m_\text{ges}^{2}} \cdot \sqrt{C^{2} \cdot m_2^{2} \cdot \sigma_{m_\text{ges}}^{2} + m_\text{ges}^{2} \cdot \left(C^{2} \cdot \sigma_{m_2}^{2} + m_2^{2} \cdot \sigma_{C}^{2}\right)}
+\end{align*}
+Man erhält:
+\begin{empheq}[box=\shadowbox*]{align}
+	C_2&=\left(3.1 \pm 0.2\right) \, \si{\nano\farad}
+\end{empheq}
+
 
 \subsubsection{Induktivität und ohmscher Widerstand der Spulen}
+Nun werden die abklingenden Schwingungen der RLC-Kreise untersucht.
+Zunächst werden die Extrema abgelesen und logarithmisch aufgetragen (Abb. \ref{fig:Drosselspule} und \ref{fig:Luftspule}).
+Es ergibt sich eine Gerade, deren Steigung $-\beta$ beträgt.
+Des Weiteren wurde die Periode $T$ der Schwingung vom Oszilloskop gemessen.
+Dies lieferte jedoch nur bei der Drosselspule einen verlässlichen Wert.
+Bei der Luftspule misst man die Zeit für eine bestimmte Anzahl an Perioden und teilt durch diese.
+Wir nehmen dabei eine Ungenauigkeit von $2\%$ an.
+Mithilfe von \eqref{eq:L} können nun die Induktivitäten berechet werden.
+Dabei ergibt sich aus der Fehlerfortpflanzung folgende Formel: 
 \begin{align*}
-L&=\frac{T^{2}}{C \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)}\\
-\sigma_{L}&=\frac{T}{C^{2} \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)^{2}} \cdot \sqrt{4 \cdot \beta^{2} \cdot C^{2} \cdot \sigma_{\beta}^{2} \cdot T^{6} + 64 \cdot \pi^{4} \cdot C^{2} \cdot \sigma_{T}^{2} + \sigma_{C}^{2} \cdot T^{2} \cdot \left(\beta^{2} \cdot T^{2} + 4 \cdot \pi^{2}\right)^{2}}
+\sigma_{L}&=\frac{T}{C^{2}  \left(\beta^{2}  T^{2} + 4  \pi^{2}\right)^{2}}  \sqrt{4  \beta^{2}  C^{2}  \sigma_{\beta}^{2}  T^{6} + 64  \pi^{4}  C^{2}  \sigma_{T}^{2} + \sigma_{C}^{2}  T^{2}  \left(\beta^{2}  T^{2} + 4  \pi^{2}\right)^{2}}
 \end{align*}
-
+Aus der Definition von $\beta$ kann nun der Innenwiderstand $R_L$ der Spule bestimmt werden:
 \begin{align*}
 	R_L&=2 \cdot \beta \cdot L\\
 	\sigma_{R_L}&=2 \cdot \sqrt{\beta^{2} \cdot \sigma_{L}^{2} + L^{2} \cdot \sigma_{\beta}^{2}}
@@ -439,16 +462,6 @@ Für die Luftspule erhält man:
 	R_L=\left(160 \pm 10\right)\, \si{\ohm}
 \end{empheq}
 
-\subsubsection{Kapazität des Folienkondensators}
-\begin{align*}
-C_2&=\frac{C_\text{Pl.}}{m_g} \cdot m_c\\
-\sigma_{C_2}&=\frac{1}{m_g^{2}} \cdot \sqrt{C_\text{Pl.}^{2} \cdot m_c^{2} \cdot \sigma_{m_g}^{2} + m_g^{2} \cdot \left(C_\text{Pl.}^{2} \cdot \sigma_{m_c}^{2} + m_c^{2} \cdot \sigma_{C_\text{Pl.}}^{2}\right)}
-\end{align*}
-
-\begin{empheq}[box=\shadowbox*]{align}
-	C_2&=\left(3.1 \pm 0.2\right) \, \si{\nano\farad}
-\end{empheq}
-
 
 \section{Diskussion}
 \label{sec:diskussion}
@@ -458,12 +471,14 @@ C_2&=\frac{C_\text{Pl.}}{m_g} \cdot m_c\\
 	\centering
 	\input{Drosselspule.tex}
 	\caption{\textit{Drosselspule}: Extrema des Spannungsverlauf logarithmisch gegen die Zeit}
+	\label{fig:Drosselspule}
 \end{figure}
 
 \begin{figure}[!htb]
 	\centering
 	\input{Luftspule.tex}
 	\caption{\textit{Luftspule}: Extrema des Spannungsverlauf logarithmisch gegen die Zeit}
+	\label{fig:Luftspule}
 \end{figure}
 
 \end{document}
