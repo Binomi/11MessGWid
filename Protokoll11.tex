@@ -360,15 +360,42 @@ Je größer der Widerstand bzw. kleiner die Induktivität, desto schneller fäll
 All dies wird in der nachfolgenden Auswertung verifiziert.  
 
 \subsubsection{Eingangswiderstand des Oszilloskops und Kapazität des Plattenkondensators}
+Da das Oszilloskop die Abfallzeit $t_A$ zwischen $90\%$ und $10\%$ misst, kann man daraus die Steigung $m=-\frac{1}{RC}$ der Geraden bestimmen, die sich ergeben würde, wenn man die Spannung wieder logarithmisch gegen die Zeit aufträgt. Dies folgt - wie oben - aus \eqref{eq:Q(t)}.
+\begin{align*}
+	m&=\frac{\ln\frac{1}{9}}{t_A}\\
+	\sigma_m&=\left|\ln\frac{1}{9}\cdot \frac{\sigma_{t_A}}{t_A^2}\right|
+\end{align*}
+Es ergeben sich die Steigungen aus Tabelle \ref{tab:RC_Oszi}.
+Dabei ergibt sich der zeitliche Fehler $\sigma_{t_A}$ bei der ersten Messung als statistischer Fehler, da wir dort zwei Messungen gemacht haben.
+Für die anderen wurde ein Fehler von $0.1\,$ms angenommen.
+
+\begin{table}[!htb]
+	\centering
+	\begin{tabular}{|l|c|c|}
+		\hline
+		Messung & Abfallzeit [ms] & Steigung\\
+		\hline
+		$C$ und $R_\text{oszi}$ & $8.47 \pm 0.09$ & $m_\text{oszi}=(-259.4 \pm 2.8)\,\si{\per \second}$ \\
+		$C$ und $R_\text{oszi}$ sowie $R_2$ parallel & $5.86 \pm 0.10$ & $m_\text{ges}=(-375.0 \pm 6.4)\,\si{\per \second}$ \\
+		$C$ und $R_\text{oszi}$ sowie $R_x$ parallel & $8.50 \pm 0.10$ & $m_x=(-258.5 \pm 3.0)\,\si{\per \second}$ \\
+		$C_2$ und $R_\text{oszi}$ sowie $R_2$ parallel& $4.27 \pm 0.10$ & $m_2=(-514.3 \pm 12.0)\,\si{\per \second}$ \\
+		\hline
+	\end{tabular}
+	\caption{Abfallzeiten und Steigungen der RC-Messungen mit dem Oszi}
+	\label{tab:RC_Oszi}
+\end{table}
+Da man bei den ersten beiden Messungen den gleichen Kondensator verwendet, ergeben sich zwei Gleichungen mit zwei Unbekannten $C$ und $R_\text{oszi}$.
+%hier fehlt noch was!!!!!!!!!!!!!!!!!!!
 \begin{align*}
 	R_\text{oszi}&=R_2 \cdot \left(\frac{m_\text{ges}}{m_\text{oszi}} - 1\right)\\
 	\sigma_{R_\text{oszi}}&=\frac{1}{m_\text{oszi}^{2}} \cdot \sqrt{m_\text{ges}^{2} \cdot R_2^{2} \cdot \sigma_{m_\text{oszi}}^{2} + m_\text{oszi}^{2} \cdot \left(R_2^{2} \cdot \sigma_{m_\text{ges}}^{2} + \sigma_{R_2}^{2} \cdot \left(m_\text{ges} - m_\text{oszi}\right)^{2}\right)}
 \end{align*}
-
+Der Wert $R_2=(2019\pm 1)\,\si{\kilo\ohm}$ entstammt der Messung mit dem Multimeter.
+Setzt man diesen und obige Werte ein, erhält man für den Eingangswiderstand des Oszilloskops folgenden Wert:
 \begin{empheq}[box=\shadowbox*]{align}
 	R_\text{oszi}&=\left(900 \pm 60\right) \, \si{\kilo\ohm}
 \end{empheq}
-
+Nun kann leicht die Kapazität des Plattenkondensators bestimmt werden.
 \begin{align*}
 	C&=- \frac{1}{m_\text{oszi} \cdot R_\text{oszi}}\\
 	\sigma_{C}&=\frac{1}{m_\text{oszi}^{2} \cdot R_\text{oszi}^{2}} \cdot \sqrt{m_\text{oszi}^{2} \cdot \sigma_{R_\text{oszi}}^{2} + R_\text{oszi}^{2} \cdot \sigma_{m_\text{oszi}}^{2}}
