@@ -184,33 +184,46 @@ Deshalb werden wir in diesem Versuch lernen, wie man das besser machen kann.
 
 \section{Theorie}
 \label{sec:theorie}
-\subsection{Messung mittels einem Kondensator}
-
+\subsection{Messung mittels Kondensatorentladung}
+Entlädt man einen Kondensator mit der Kapazität $C$, auf dem sich anfangs die Ladung $Q_0$ befindet, über einen ohmschen Widerstand $R$, so fließt zuerst viel Ladung ab.
+Je weniger Ladung auf den Platten ist, desto weniger fließt ab.
+Dieser Ladungsabfall wird durch diese Formel beschrieben:
 \begin{align}
 	Q(t)=Q_0 \exp \left(-\frac{t}{RC}\right)
 	\label{eq:Q(t)}
 \end{align}
-Kennt man die Kapazität $C$ und die Ladung, die sich auf dem Kondensator befindet, zu zwei verschiedenen Zeitpunkten $t_1$ und $t_2$, kann man also den Widerstand $R$ berechnen, über den der Strom abfließt:
-\begin{align}
+Kennt man die $C$ und die Ladung, die sich auf dem Kondensator befindet, zu zwei verschiedenen Zeitpunkten $t_1$ und $t_2$, kann man also den Widerstand $R$ berechnen, über den der Strom abfließt:
+\begin{align*}
 	R=-\frac{t_2-t_1}{C\cdot\ln\frac{Q(t_2)}{Q(t_1)}}
-\end{align}
+\end{align*}
+
+\subsection{Plattenkondensator}
 Der hier verwendete Kondenstor hat einen Plattenradius $r=0.1~\si{\meter}$, einen Plattenabstand $d=0.005~\si{\meter}$ und eine Plattenzahl $n=65$.
 Für die Berechnung der Kapazität müssen also Randeffekte betrachtet werden.
 Dabei wird diese Formel verwendet:
 \begin{align}	
-	C_n=(n-1)\varepsilon_0\varepsilon_r\left[\frac{\pi r^2}{d}+r\left(\ln\frac{16\pi r}{d}-1\right)\right]
+	C_n=(n-1)\,\varepsilon_0\,\varepsilon_r\left[\frac{\pi r^2}{d}+r\left(\ln\frac{16\pi r}{d}-1\right)\right]
 	\label{eq:C_Pl}
 \end{align}
-%ergibt sich eine Kapazität $C=3.896~\si{\nano\farad}$.
 
 \subsection{Analoger Stromintegrator}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=1.0]{Stromintegrator.png}
+	\caption{Schaltskizze des Stromintegrators}
+	\label{fig:Stromintegrator}
+\end{figure}
+
 Nach der \textit{Kirchhoffschen Knotenregel} bei S gilt $I_R+I_C=0$.
 Mit den folgenden Beziehungen der Ströme $I_R=U_E/R$ und $I_C=\dot{Q}_C=C\dot{U}_A$ erhält man:
 \begin{align}
 	U_A=-\frac{1}{RC}\int \limits_{t_0}^t U_E \,\dif t
 \end{align}
+Die Ausgangsspannung $U_A$ ist somit proportional zur geflossenen Ladung $Q=\int \limits_{t_0}^t I \,\dif t$.
+Kennt man den Proportionalitätsfaktor, kann man Ladung messen.
 
 \subsection{RLC-Schwingkreis}
+
 \begin{align}
 	\ddot{Q}+2\beta\dot{Q}+\omega_0^2 Q=0
 \end{align}
@@ -224,21 +237,37 @@ Mit dem Logarithmischen Dekrement $\Lambda=\beta T$ ergibt sich für die Indukti
 	L=\frac{1}{C\omega_0^2}=\frac{1}{C(\omega^2+\beta^2)}=\frac{1}{C}\frac{T^2}{4\pi^2+\Lambda^2}
 	\label{eq:L}
 \end{align}
+Für lange Spulen kann deren Induktivität $L$ aus der Länge $l$, der Wicklungszahl $n$ sowie der Querschnittsfläche $A$ mit folgender Formel berechnet werden:
 \begin{align}
 	L=\mu_0 \cdot A \cdot \left(\frac{n}{l}\right)^2
 	\label{eq:IndLangeSpule}
 \end{align}
+Dabei ist $\mu_0=4\pi\cdot 10^{-7}\, \si{\henry \per \meter}$ die \textit{Permeabilität des Vakuums}. 
 
 \section{Durchführung}
 \label{sec:durchfuehrung}
 \subsection{Kalibrieren des Ladungsmessgerätes}
-Dazu wird der Eichkreis nach Abb. \ref{} verschaltet.
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=1.0]{Eichen.png}
+	\caption{Kalibrieren: Schaltplan}
+	\label{fig:Eichkreis}
+\end{figure}
+
+Dazu wird der Eichkreis nach Abb. \ref{fig:Eichkreis} verschaltet.
 Der Eichgenerator wird in der Stellung \emph{Zeitmessung} mit dem Oszilloskop auf verschiedene Zeitdauern der Spannungsimpulse eingestellt.
 Erwartet werden Werte zwischen 50 und 500 Millisekunden.
 Je eingestellter Zeitdauer wird dann in der Stellung \emph{Eichen} dreimal der Messwert des Ladungsmessgerätes notiert.
 Dies geschieht für 5 verschiedene Zeiten.
 
 \subsection{Entladung des Plattenkondensators}
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=1.0]{Entladen.png}
+	\caption{Entladen: Aufbau}
+	\label{fig:Entladen}
+\end{figure}
+
 Der  Plattenkondensator wir mit 220V aufgeladen und sofort durch den Messkreis entladen.
 Dabei wird die geflossene Ladung gemessen.
 Dies geschieht fünfmal.\\
@@ -288,13 +317,6 @@ Es ergibt sich:
 $$m=0.8729 \pm 0.0017 ~\text{Skt.}/\si{\micro\coulomb}$$
 Da der Fehler sehr klein ist, wird er bei den nun folgenden Umrechnungen weggelassen.
 
-\begin{figure}
- \centering
- \input{Kalibration.tex}
- \caption{Skalenteile des Messgeräts in Abhängigkeit der geflossenen Ladung}
- \label{fig:Kalibration}
-\end{figure}
-
 \subsection{Berechnung von $\varepsilon_0$}
 Wir legen an den Kondensator eine Spannung an und lassen danach die aufgebrachte Ladung über das Ladungsmessgerät abfließen.
 Mit folgender Formel kann dann die Kapazität berechnet werden.
@@ -312,6 +334,7 @@ Mit einer angelegten Spannung $U=(220 \pm 0.1)\,$V und einer gemessenen Ladung $
 Stellt man \eqref{eq:C_Pl} nun nach der elektrischen Feldkonstante $\varepsilon_0$ um und setzt die oben angegebenen Angaben des Plattenkondensators sowie die gemessene Kapazität ein, erhält man
 \begin{empheq}[box=\shadowbox*]{align}
 	\varepsilon_0= \left(9.19 \pm 0.07\right)\cdot 10^{-12}\,\si[per-mode=fraction]{\ampere\second\per\volt\per\meter}
+	\label{res:eps0}
 \end{empheq}
 
 
@@ -323,12 +346,12 @@ Aus der Geradensteigung $m$ kann mit dem obigen Ergebnis für die Kapazität der
 	\sigma_{R}&=\frac{1}{C^{2} \cdot m^{2}} \cdot \sqrt{C^{2} \cdot \sigma_{m}^{2} + m^{2} \cdot \sigma_{C}^{2}}
 \end{align*}
 
-Setzt man nun die Geradensteigung $m_\text{iso}$ aus Abb.\ref{fig:R_iso} ein, erhält man für den Isolationswiderstand $R_\text{iso}$ des Plattenkondensators folgenden Wert:
+Setzt man nun die Geradensteigung $m_\text{iso}=(-0.01600 \pm 0.0016)\,\si{\per\second}$ aus Abb. \ref{fig:R_iso} ein, erhält man für den Isolationswiderstand $R_\text{iso}$ des Plattenkondensators folgenden Wert:
 \begin{empheq}[box=\shadowbox*]{align}
 	R_\text{iso}&=\left(15 \pm 1\right)\, \si{\giga\ohm}
 \end{empheq}
 
-Analog wird der Gesamtwiderstand $R=\left(2.4 \pm 0.2\right) \, \si{\giga\ohm}$ aus der zweiten Messung berechnet.
+Analog wird der Gesamtwiderstand $R=\left(2.4 \pm 0.2\right) \, \si{\giga\ohm}$ aus der zweiten Messung mit $m_\text{ges}=(-0.103 \pm 0.011)\,\si{\per\second}$ berechnet.
 Dieser setzt sich jedoch aus dem eben berechneten  Isolationswiderstand und dem unbekannten Widerstand $R_x$ zusammen, die parallel geschaltet sind.
 \begin{align*}
 	R_x&=\left(\frac{1}{R} - \frac{1}{R_\text{iso}}\right)^{-1}\\
@@ -339,20 +362,6 @@ Es ergibt sich also:
 	R_x&=\left(2.8 \pm 0.4\right) \, \si{\giga\ohm}
 	\label{res:R_x_Entl}
 \end{empheq}
-
-\begin{figure}[!htb]
-	\centering
-	\input{Entladen2.tex}
-	\caption{Entladung des Kondesators über den Isolationswiderstand $R_\text{iso}$}
-	\label{fig:R_iso}
-\end{figure}
-
-\begin{figure}[!htb]
-	\centering
-	\input{Entladen1.tex}
-	\caption{Entladung des Kondesators über $R_x$ und $R_\text{iso}$}
-	\label{fig:R_x+R_iso}
-\end{figure}
 
 \subsection{Messungen mit dem Oszilloskop}
 Die ausgedruckten Spannungsverläufe befinden sich im Anhang.
@@ -461,11 +470,13 @@ Für die Drosselspule ergibt sich:
 \begin{empheq}[box=\shadowbox*]{align}
 	L=(9.6 \pm 0.7)\, \si{\henry} \; , \;
 	R_L=\left(6.1 \pm 0.5\right)\, \si{\kilo\ohm}
+	\label{res:Drosselspule}
 \end{empheq}
 Für die Luftspule erhält man:
 \begin{empheq}[box=\shadowbox*]{align}
 	L=(0.018 \pm 0.001)\, \si{\henry} ~,~
 	R_L=\left(160 \pm 10\right)\, \si{\ohm}
+	\label{res:Luftspule}
 \end{empheq}
 
 
@@ -477,16 +488,57 @@ Man stellt fest, dass zumindest beide Wert im $\si{\giga\ohm}$-Bereich liegen.
 Der zweite Wert ist jedoch negativ und hat einen sehr großen Fehler.
 Dies ist dem zu geringen \textit{Eingangswiderstand} des Oszilloskops \eqref{res:R_oszi} geschuldet, der etwas kleiner als $1\,\si{\mega\ohm}$ ist.
 Somit sind die Abfallzeiten, die man bei den Schaltungen Kondensator alleine bzw. mit $R_x$ parallel erhält, kaum verschieden.
-Könnte man einen größeren Eingangswiderstand einstellen, wäre diese Messmethode auch besser geeignet.
-Trotzdem ergeben sich bei der Kapazitätsmessung passable Werte: Die beiden Werte \eqref{res:C_Entl} und \eqref{res:C_oszi} für die Kapazität des Plattenkondensators weichen nur um $6\%$ voneinander ab.
+Könnte man einen größeren Eingangswiderstand einstellen, wäre diese Messmethode auch besser geeignet.\\
+Trotzdem ergeben sich bei der Kapazitätsmessung passable Werte: Die beiden Werte \eqref{res:C_Entl} und \eqref{res:C_oszi} für die \textbf{Kapazität des Plattenkondensators} weichen nur um $6\%$ voneinander ab.
 Außerdem liegt der erste Wert im Fehlerintervall des zweiten.
 Der Wert $C=(4.07 \pm 0.02) \,\si{\nano\farad}$ aus der Multimetermessung liegt in beiden Fehlerintervallen.\\
-$\mathbf{\boldsymbol\varepsilon_0}$\\
-$C$ und $C_2$\\
-Multimeter\\
-Luftspule
+
+Vergleicht man die Kapazität des Plattenkondensators mit der des herkömmlichen \textbf{Folienkondensators} (aus den Abfallzeiten berechnet: \eqref{res:C_2} oder mit dem Multimeter gemessen: $C_2=(3.18\pm 0.02)\,$nF), fällt auf, dass der zweite etwa eine drei Viertel so große Kapazität hat wie ersterer hat, obwohl er deutlich kleiner ist.
+Dies hat verschiedene Gründe: Zum einen ist der Plattenabstand viel geringer als die $5\,$mm unseres Kondensators.
+Zum anderen ist in dem herkömmlichen Kondensator keine wirkliche Platte zu finden, sondern eine Folie die öfter gewickelt ist, sodass die Fläche größer wird.
+Außerdem kann man zwischen die Platten ein Dielektrikum bringen.
+All dies erhöht die Kapazität und so ist das Resultat nicht verwunderlich.\\
+
+Mit dem Multimeter haben wir für die Drosselspule einen \textbf{Widerstand} $\mathbf{R_L}=(748\pm 1)\,\Omega$ gemessen, für die Luftspule $R_L=(98.1\pm 0.1)\,\Omega$.
+Diese Werte vergleichen wir nun mit den berechneten Werten aus der RLC-Messung: \eqref{res:Drosselspule} und \eqref{res:Luftspule}.
+Während der Wert aus der Schwingkreismessung bei der Luftspule etwa $60\%$ größer ist, ist er bei der Drosselspule eine Größenordnung größer. \\
+
+\textbf{Luftspule}: Aus den Spulendaten  und  $l=1.0\,\si{\meter}$, $\diameter=50.8\,$mm sowie $n=2800$ ergibt sich mit \eqref{eq:IndLangeSpule} eine Induktivität $L=0.01997\,\si{\henry}$. Von diesem Wert weicht der von uns gemessene Wert \eqref{res:Luftspule} $10\%$ ab.
+Dies ist jedoch ein gutes Ergebnis, da nicht nur bei der Durchführung Fehlerquellen zu finden sind, sondern aufgrund der graphischen Auswertung auch dort.\\
+
+Der gemessene Wert für die \textbf{Elektrische Feldkonstante} \eqref{res:eps0} weicht weniger als $4\%$ vom Literaturwert $\varepsilon_0 \approx 8.85\cdot 10^{-12}\,\si[per-mode=fraction]{\ampere\second\per\volt\per\meter}$ ab.
+
+\subsection{Ladungsmessgerät}
+Der Stromintegrator misst sehr genau.
+Dies ist am geringen Fehler bei der Kalibration zu erkennen.
+Während des Versuches stellten wir jedoch fest, dass er einen Offset zu besitzen schien, der $\leq 0.01\,$Skt.-Teile war und ein wenig schwankte.
+Dieses Phänomen haben wir in der Auswertung nicht beachtet.
+Hätten wir es getan, würde evtl. der letzte Messwert in Abb.\ref{fig:R_x+R_iso} besser zu den vorigen passen und sich somit ein kleinere Steigung der Geraden ergeben.
+Dann wäre auch $R_x$ kleiner.
+Für diesen Wert haben wir jedoch keinen Vergleich, da $R_x$ zu groß ist, um ihn mit dem Multimeter messen zu können. 
 
 \section{Anhang}
+\begin{figure}[!htb]
+	\centering
+	\input{Kalibration.tex}
+	\caption{Skalenteile des Messgeräts in Abhängigkeit der geflossenen Ladung}
+	\label{fig:Kalibration}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\input{Entladen2.tex}
+	\caption{Entladung des Kondesators über den Isolationswiderstand $R_\text{iso}$}
+	\label{fig:R_iso}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\input{Entladen1.tex}
+	\caption{Entladung des Kondesators über $R_x$ und $R_\text{iso}$}
+	\label{fig:R_x+R_iso}
+\end{figure}
+
 \begin{figure}[!htb]
 	\centering
 	\input{Drosselspule.tex}
