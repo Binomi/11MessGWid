@@ -306,6 +306,7 @@ Mit folgender Formel kann dann die Kapazität berechnet werden.
 Mit einer angelegten Spannung $U=(220 \pm 0.1)\,$V und einer gemessenen Ladung $Q=\left(8.89 \pm 0.07\right) \cdot 10^{-7}\,\si{\coulomb}$ folgt für die Kapazität des Plattenkondensators
 \begin{empheq}[box=\shadowbox*]{align}
 	C&=\left(4.04 \pm 0.03\right)\, \si{\nano\farad}
+	\label{res:C_Entl}
 \end{empheq}
 
 Stellt man \eqref{eq:C_Pl} nun nach der elektrischen Feldkonstante $\varepsilon_0$ um und setzt die oben angegebenen Angaben des Plattenkondensators sowie die gemessene Kapazität ein, erhält man
@@ -336,6 +337,7 @@ Dieser setzt sich jedoch aus dem eben berechneten  Isolationswiderstand und dem 
 Es ergibt sich also:
 \begin{empheq}[box=\shadowbox*]{align}
 	R_x&=\left(2.8 \pm 0.4\right) \, \si{\giga\ohm}
+	\label{res:R_x_Entl}
 \end{empheq}
 
 \begin{figure}[!htb]
@@ -397,6 +399,7 @@ Der Wert $R_2=(2019\pm 1)\,\si{\kilo\ohm}$ entstammt der Messung mit dem Multime
 Setzt man diesen und obige Werte ein, erhält man für den Eingangswiderstand des Oszilloskops folgenden Wert:
 \begin{empheq}[box=\shadowbox*]{align}
 	R_\text{oszi}&=\left(900 \pm 60\right) \, \si{\kilo\ohm}
+	\label{res:R_oszi}
 \end{empheq}
 Nun kann leicht die Kapazität des Plattenkondensators bestimmt werden.
 \begin{align*}
@@ -406,6 +409,7 @@ Nun kann leicht die Kapazität des Plattenkondensators bestimmt werden.
 Aus unseren Werten ergibt sich:
 \begin{empheq}[box=\shadowbox*]{align}
 	C&=\left(4.3 \pm 0.3\right) \, \si{\nano\farad}
+	\label{res:C_oszi}
 \end{empheq}
 
 
@@ -418,6 +422,7 @@ Analog formen wir nun die Gleichungen um, die aus der ersten und dritten Messung
 Wir erhalten folgenden Wert:
 \begin{empheq}[box=\shadowbox*]{align}
 	R_x&=\left(-0.3 \pm 1.2\right) \, \si{\giga\ohm}
+	\label{res:R_x_oszi}
 \end{empheq}
 
 \subsubsection{Kapazität des Folienkondensators}
@@ -429,6 +434,7 @@ C_2&=\frac{m_2}{m_\text{ges}} \cdot C\\
 Man erhält:
 \begin{empheq}[box=\shadowbox*]{align}
 	C_2&=\left(3.1 \pm 0.2\right) \, \si{\nano\farad}
+	\label{res:C_2}
 \end{empheq}
 
 
@@ -440,10 +446,10 @@ Des Weiteren wurde die Periode $T$ der Schwingung vom Oszilloskop gemessen.
 Dies lieferte jedoch nur bei der Drosselspule einen verlässlichen Wert.
 Bei der Luftspule misst man die Zeit für eine bestimmte Anzahl an Perioden und teilt durch diese.
 Wir nehmen dabei eine Ungenauigkeit von $2\%$ an.
-Mithilfe von \eqref{eq:L} können nun die Induktivitäten berechet werden.
+Mithilfe von \eqref{eq:L} können nun die Induktivitäten berechnet werden.
 Dabei ergibt sich aus der Fehlerfortpflanzung folgende Formel: 
 \begin{align*}
-\sigma_{L}&=\frac{T}{C^{2}  \left(\beta^{2}  T^{2} + 4  \pi^{2}\right)^{2}}  \sqrt{4  \beta^{2}  C^{2}  \sigma_{\beta}^{2}  T^{6} + 64  \pi^{4}  C^{2}  \sigma_{T}^{2} + \sigma_{C}^{2}  T^{2}  \left(\beta^{2}  T^{2} + 4  \pi^{2}\right)^{2}}
+	\sigma_{L}&=\frac{T}{C^{2}  \left(\beta^{2}  T^{2} + 4  \pi^{2}\right)^{2}}  \sqrt{4  \beta^{2}  C^{2}  \sigma_{\beta}^{2}  T^{6} + 64  \pi^{4}  C^{2}  \sigma_{T}^{2} + \sigma_{C}^{2}  T^{2}  \left(\beta^{2}  T^{2} + 4  \pi^{2}\right)^{2}}
 \end{align*}
 Aus der Definition von $\beta$ kann nun der Innenwiderstand $R_L$ der Spule bestimmt werden:
 \begin{align*}
@@ -465,6 +471,20 @@ Für die Luftspule erhält man:
 
 \section{Diskussion}
 \label{sec:diskussion}
+\subsection{Vergleiche}
+Zuerst vergleichen wir die beiden Werte für den \textbf{unbekannten Widerstand} $R_x$, die man über die Entladungsmessung \eqref{res:R_x_Entl} sowie aus der Schwingkreismessung \eqref{res:R_x_oszi} erhält, um festzustellen, welche der beiden Messmethoden geeigneter ist.
+Man stellt fest, dass zumindest beide Wert im $\si{\giga\ohm}$-Bereich liegen.
+Der zweite Wert ist jedoch negativ und hat einen sehr großen Fehler.
+Dies ist dem zu geringen \textit{Eingangswiderstand} des Oszilloskops \eqref{res:R_oszi} geschuldet, der etwas kleiner als $1\,\si{\mega\ohm}$ ist.
+Somit sind die Abfallzeiten, die man bei den Schaltungen Kondensator alleine bzw. mit $R_x$ parallel erhält, kaum verschieden.
+Könnte man einen größeren Eingangswiderstand einstellen, wäre diese Messmethode auch besser geeignet.
+Trotzdem ergeben sich bei der Kapazitätsmessung passable Werte: Die beiden Werte \eqref{res:C_Entl} und \eqref{res:C_oszi} für die Kapazität des Plattenkondensators weichen nur um $6\%$ voneinander ab.
+Außerdem liegt der erste Wert im Fehlerintervall des zweiten.
+Der Wert $C=(4.07 \pm 0.02) \,\si{\nano\farad}$ aus der Multimetermessung liegt in beiden Fehlerintervallen.\\
+$\mathbf{\boldsymbol\varepsilon_0}$\\
+$C$ und $C_2$\\
+Multimeter\\
+Luftspule
 
 \section{Anhang}
 \begin{figure}[!htb]
