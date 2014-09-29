@@ -187,7 +187,7 @@ Deshalb werden wir in diesem Versuch lernen, wie man das besser machen kann.
 \subsection{Messung mittels Kondensatorentladung}
 Entlädt man einen Kondensator mit der Kapazität $C$, auf dem sich anfangs die Ladung $Q_0$ befindet, über einen ohmschen Widerstand $R$, so fließt zuerst viel Ladung ab.
 Je weniger Ladung auf den Platten ist, desto weniger fließt ab.
-Dieser Ladungsabfall wird durch diese Formel beschrieben:
+Dieser Ladungsabfall wird durch diese Formel beschrieben (vgl. \cite[S.51]{demtroeder2})
 \begin{align}
 	Q(t)=Q_0 \exp \left(-\frac{t}{RC}\right)
 	\label{eq:Q(t)}
@@ -196,25 +196,30 @@ Kennt man die $C$ und die Ladung, die sich auf dem Kondensator befindet, zu zwei
 \begin{align*}
 	R=-\frac{t_2-t_1}{C\cdot\ln\frac{Q(t_2)}{Q(t_1)}}
 \end{align*}
+Außerdem muss bei unserer Messung der \textit{Isolationwiderstand} $R_\text{iso}$ des Kondensators beachtet werden, der parallel zu dem zu bestimmenden Widerstand $R_x$ geschaltet ist.
+So tauscht dieser mit seiner Umgebung Ladungen aus, und die Ladung auf den Platten nimmt mit der Zeit ab.
+Normalerweise ist $R_\text{iso}$ groß im Vergleich zu $R_x$.
+Da wir hier aber große Widerstände messen, ist $R_x$ nicht viel kleiner als $R_\text{iso}$.
 
 \subsection{Plattenkondensator}
 Der hier verwendete Kondenstor hat einen Plattenradius $r=0.1~\si{\meter}$, einen Plattenabstand $d=0.005~\si{\meter}$ und eine Plattenzahl $n=65$.
 Für die Berechnung der Kapazität müssen also Randeffekte betrachtet werden.
-Dabei wird diese Formel verwendet:
+Dabei wird diese Formel aus \cite[S.101]{prakti} verwendet:
 \begin{align}	
 	C_n=(n-1)\,\varepsilon_0\,\varepsilon_r\left[\frac{\pi r^2}{d}+r\left(\ln\frac{16\pi r}{d}-1\right)\right]
 	\label{eq:C_Pl}
 \end{align}
 
+\newpage
 \subsection{Analoger Stromintegrator}
-\begin{figure}[!htb]
+\begin{figure}[!h]
 	\centering
-	\includegraphics[scale=1.0]{Stromintegrator.png}
-	\caption{Schaltskizze des Stromintegrators}
+	\includegraphics[scale=0.8]{Stromintegrator.png}
+	\caption{Schaltskizze des Stromintegrators \cite[Datum: 25.09.2014]{LP11}}
 	\label{fig:Stromintegrator}
 \end{figure}
 
-Nach der \textit{Kirchhoffschen Knotenregel} bei S gilt $I_R+I_C=0$.
+Nach der \textit{Kirchhoffschen Knotenregel} \cite[S.57]{demtroeder2} bei S gilt $I_R+I_C=0$.
 Mit den folgenden Beziehungen der Ströme $I_R=U_E/R$ und $I_C=\dot{Q}_C=C\dot{U}_A$ erhält man:
 \begin{align}
 	U_A=-\frac{1}{RC}\int \limits_{t_0}^t U_E \,\dif t
@@ -223,10 +228,17 @@ Die Ausgangsspannung $U_A$ ist somit proportional zur geflossenen Ladung $Q=\int
 Kennt man den Proportionalitätsfaktor, kann man Ladung messen.
 
 \subsection{RLC-Schwingkreis}
-
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.8]{Schwingkreis.png}
+	\caption{Aufbau eines RLC-Schwingkreises \cite[Datum: 25.09.2014]{LP11}}	
+	\label{fig:schwingkreis}
+\end{figure}
+Für die in Abb. \ref{fig:schwingkreis} dargestellte Schaltung ergibt sich folgende Differentialgleichung 2.Ordnung \cite[S.174 f.]{demtroeder2} ($S_1$ und $S_2$ offen, $S_3$ zu): 
 \begin{align}
 	\ddot{Q}+2\beta\dot{Q}+\omega_0^2 Q=0
 \end{align}
+Dabei gelten für die Koeffizienten folgende Beziehungen:
 \begin{align*}
 	\beta=\frac{R_L}{2L} \quad , \quad 
 	\omega_0=\sqrt{\frac{1}{LC}} \quad , \quad
@@ -237,7 +249,7 @@ Mit dem Logarithmischen Dekrement $\Lambda=\beta T$ ergibt sich für die Indukti
 	L=\frac{1}{C\omega_0^2}=\frac{1}{C(\omega^2+\beta^2)}=\frac{1}{C}\frac{T^2}{4\pi^2+\Lambda^2}
 	\label{eq:L}
 \end{align}
-Für lange Spulen kann deren Induktivität $L$ aus der Länge $l$, der Wicklungszahl $n$ sowie der Querschnittsfläche $A$ mit folgender Formel berechnet werden:
+Für \textbf{lange Spulen} kann deren Induktivität $L$ auch aus der Länge $l$, der Wicklungszahl $n$ sowie der Querschnittsfläche $A$ mit folgender Formel aus \cite[S.135]{demtroeder2} berechnet werden:
 \begin{align}
 	L=\mu_0 \cdot A \cdot \left(\frac{n}{l}\right)^2
 	\label{eq:IndLangeSpule}
@@ -249,7 +261,7 @@ Dabei ist $\mu_0=4\pi\cdot 10^{-7}\, \si{\henry \per \meter}$ die \textit{Permea
 \subsection{Kalibrieren des Ladungsmessgerätes}
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=1.0]{Eichen.png}
+	\includegraphics[scale=0.7]{Eichen.png}
 	\caption{Kalibrieren: Schaltplan \cite[Datum: 25.09.2014]{LP11}}
 	\label{fig:Eichkreis}
 \end{figure}
@@ -260,15 +272,16 @@ Erwartet werden Werte zwischen 50 und 500 Millisekunden.
 Je eingestellter Zeitdauer wird dann in der Stellung \emph{Eichen} dreimal der Messwert des Ladungsmessgerätes notiert.
 Dies geschieht für 5 verschiedene Zeiten.
 
+\newpage
 \subsection{Entladung des Plattenkondensators}
 \begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=1.0]{Entladen.png}
+	\includegraphics[scale=0.7]{Entladen.png}
 	\caption{Entladen: Aufbau \cite[Datum: 25.09.2014]{LP11}}
 	\label{fig:Entladen}
 \end{figure}
 
-Der  Plattenkondensator wir mit 220V aufgeladen und sofort durch den Messkreis entladen.
+Der  Plattenkondensator wir mit 220V aufgeladen und sofort durch den Messkreis aus Abb.\ref{fig:Entladen} entladen.
 Dabei wird die geflossene Ladung gemessen.
 Dies geschieht fünfmal.\\
 Nun wird der Kondensator wieder aufgeladen und nach bestimmten Zeiten (t=0, 1,2,3,5 Minuten) über das Ladungsmessgerät entladen.
@@ -294,7 +307,7 @@ Bei Messungen von einem RC-Kreis sollte man die \emph{Abfallzeit} vom Oszillosko
 \emph{http://www.praktikum.physik.uni-goettingen.de/allgemeines/anleitung/downloads/TDS200E\_71048501.pdf}}.
 Dies vereinfacht die Auswertung.
 Bei den RLC-Kreisen benötigt man die Periode der abklingenden Schwingung. 
-Zur Erzielung guter Ergebnisse mussten wir am Oszilloskop die Einstellung \emph{Tastknopf} auf 50x stellen.
+Zur Erzielung guter Ergebnisse mussten wir am Oszilloskop die Einstellung \emph{Tastkopf} auf 50x stellen.
 
 \subsection{Messungen mit dem Multimeter}
 Mit dem Multimeter werden folgende Größen gemessen:
@@ -555,7 +568,7 @@ Für diesen Wert haben wir jedoch keinen Vergleich, da $R_x$ zu groß ist, um ih
 	\caption{\textit{Luftspule}: Extrema des Spannungsverlauf logarithmisch gegen die Zeit}
 	\label{fig:Luftspule}
 \end{figure}
-
+\newpage
 \bibliography{literatur}
 \bibliographystyle{babalpha}
 
