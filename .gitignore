@@ -8,4 +8,8 @@
 
 *.tex.bak
 
+*.bbl
+
+*.blg
+
 Protokoll11.log
